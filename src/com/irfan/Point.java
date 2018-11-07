@@ -27,7 +27,7 @@ public class Point {
 			 (p1.getY() + p2.getY() + p3.getY())/3 ); 
     }
 
-    public Complex findMapping(this, Panel p ){
+    public Complex findMapping( Panel p ){
         double midX=p.getWidth()/2d;
         double midY=p.getHeight()/2d;
         double real = (this.x-midX)/midX;
