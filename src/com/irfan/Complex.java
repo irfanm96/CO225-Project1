@@ -3,8 +3,8 @@ package com.irfan;
 public class Complex {
     private double real;
     private double imaginary;
-    public static Complex manderboltConstant = new Complex(0, 0);
-    public static Complex juliaConstant = new Complex(-0.5, 0.156);
+    private static Complex manderboltConstant = new Complex(0, 0);
+    private static Complex juliaConstant = new Complex(-0.5, 0.156);
 
     public Complex(double real, double imaginary) {
         this.real = real;
@@ -23,7 +23,7 @@ public class Complex {
         return new Complex(real, imaginary);
     }
 
-    double calculateAbosluteValue() {
+    private double calculateAbosluteValue() {
 
         double absolute = (this.real * this.real) + (this.imaginary * this.imaginary);
         return absolute;
@@ -48,7 +48,7 @@ public class Complex {
     }
 
 
-    public boolean test1(Complex z) {
+    public static boolean test1(Complex z) {
         int iterations = 1000;
         Complex newz = calculateManderbolt(manderboltConstant, z);
         for (int i = 0; i < iterations; i++) {
@@ -75,4 +75,4 @@ public class Complex {
     }
 
 }
-}
+

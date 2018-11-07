@@ -46,10 +46,17 @@ public  class Panel extends JPanel { // inherit JPanel
 		// So do not change the value of static points
 		int points = Panel.points;
 
-		while((points-- > 0)) {
-			int r = ran.nextInt(3);
-			mid = mid.findMidTo(triangle[r]);
-			printPoint((Graphics2D)g, Color.BLACK, mid);
+		//while(points-- > 0) {
+		for(int i=0 ; i<600 ; i++) {
+			for(int j =0 ; j<800 ;j++) {
+				Point point=new Point(i,j); // create points
+				Complex z=point.findMapping(this); // map to complex plane
+				 if(!Complex.test1(z)){ // test for manderbolt
+					 printPoint((Graphics2D) g, Color.BLACK, point);
+				 }
+
+				//}
+			}
 		}
 
 	}
