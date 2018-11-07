@@ -41,9 +41,9 @@ public class Complex {
         newZ = addComplex(z1.calculateSquare(), z2);
         return newZ;
     }
-    public static Complex calculateJulia(Complex z1, Complex z2) {
+    public static Complex calculateJulia(Complex z1) {
         Complex newZ;
-        newZ = addComplex(z1.calculateSquare(), z2);
+        newZ = addComplex(z1.calculateSquare(), juliaConstant);
         return newZ;
     }
 
@@ -63,7 +63,7 @@ public class Complex {
     public boolean test2(Complex z) {
         int iterations = 1000;
 
-        Complex newz = calculateJulia(z,juliaConstant);
+        Complex newz = calculateJulia(z);
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
                 return true;
