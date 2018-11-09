@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32e90283-5bf6-4cf8-9e08-28377394809e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/irfan/Complex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/irfan/Complex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/irfan/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/irfan/Panel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,12 +36,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2062" />
+          <entry key="java" value="2076" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2062" />
+          <entry key="JAVA" value="2076" />
         </counts>
       </usages-collector>
     </session>
@@ -61,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/irfan/Complex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+            <state relative-caret-position="488">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="e#849#850#0" expanded="true" />
                 <element signature="e#876#877#0" expanded="true" />
@@ -85,14 +84,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/irfan/Panel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="420">
+              <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Panel#0;class#Panel#0" />
               </folding>
             </state>
           </provider>
@@ -115,8 +113,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/irfan/Main.java" />
         <option value="$PROJECT_DIR$/src/com/irfan/Point.java" />
-        <option value="$PROJECT_DIR$/src/com/irfan/Panel.java" />
         <option value="$PROJECT_DIR$/src/com/irfan/Complex.java" />
+        <option value="$PROJECT_DIR$/src/com/irfan/Panel.java" />
       </list>
     </option>
   </component>
@@ -166,7 +164,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541783733936" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541784092085" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -235,15 +233,15 @@
       <workItem from="1541573523137" duration="970000" />
       <workItem from="1541745729140" duration="2389000" />
       <workItem from="1541767851155" duration="1491000" />
-      <workItem from="1541781200996" duration="2617000" />
+      <workItem from="1541781200996" duration="2890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14029000" />
+    <option name="totallyTimeSpent" value="14302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-26" width="1366" height="794" extended-state="1" />
+    <frame x="0" y="-26" width="1366" height="794" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27045456" />
@@ -255,7 +253,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32756132" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32756132" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -300,17 +298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/irfan/Panel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Panel#0;class#Panel#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.desktop/java/awt/Color.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -320,13 +307,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/irfan/Complex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
+        <state relative-caret-position="488">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="e#849#850#0" expanded="true" />
             <element signature="e#876#877#0" expanded="true" />
             <element signature="e#912#913#0" expanded="true" />
             <element signature="e#944#945#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/irfan/Panel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

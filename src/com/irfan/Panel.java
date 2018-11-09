@@ -9,21 +9,11 @@ import java.util.Random;
 public  class Panel extends JPanel { // inherit JPanel
 
 	private int width, height;
-	private Point [] triangle;
-	private static int points = 100000;
-
 	public Panel(int width, int height) {
 		// set the panel size
 		this.width  = width;
 		this.height = height;
 		setPreferredSize(new Dimension(width, height));
-
-		// panel is supposed to have a triangle in it.
-		triangle = new Point[3];
-		triangle[1] = new Point(0d, 0d);
-		triangle[0] = new Point(width/2d, (double)height);
-		triangle[2] = new Point((double)width, 0d);
-
 	}
 
 	private static void printPoint(Graphics2D frame, Color c, Point p) {
@@ -37,11 +27,11 @@ public  class Panel extends JPanel { // inherit JPanel
 		// call paintComponent from parent class
 		super.paintComponent(g);
 
-		for(int i=0 ; i<600 ; i++) {
-			for(int j =0 ; j<800 ;j++) {
+		for(int i=0 ; i<this.width ; i++) {
+			for(int j =0 ; j<this.height ;j++) {
 				Point point=new Point(i,j); // create points
 				Complex z=point.findMapping(this,-2,2,-2,2); // map to complex plane
-				printPoint((Graphics2D) g, z.test1(1000), point);
+				printPoint((Graphics2D) g, z.test2(1000), point);
 			}
 		}
 	}
