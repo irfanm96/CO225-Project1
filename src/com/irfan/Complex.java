@@ -36,11 +36,11 @@ public class Complex {
     private double calculateAbosluteValue() {
 
         double absolute = (this.real * this.real) + (this.imaginary * this.imaginary);
-        return Math.sqrt(absolute);
+        return absolute;
     }
 
     public boolean checkMod() {
-        if (this.calculateAbosluteValue() > 2) {
+        if (this.calculateAbosluteValue() < 4) {
             return false;
         }
         return true;
@@ -64,8 +64,7 @@ public class Complex {
 
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-                Color newColor=new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
-                return newColor;
+                return  new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
             }
             newz = calculateManderbolt(newz, this);
         }
@@ -78,8 +77,7 @@ public class Complex {
         Complex newz = calculateJulia(this);
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-                Color newColor=new Color(Color.HSBtoRGB(iterations/256f,1,iterations/(iterations+8f)));
-                return newColor;
+               return new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
             }
             newz = calculateJulia( newz);
         }
