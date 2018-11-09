@@ -27,11 +27,11 @@ public class Point {
 			 (p1.getY() + p2.getY() + p3.getY())/3 ); 
     }
 
-    public Complex findMapping( Panel p ){
-        double midX=p.getWidth()/2d;
-        double midY=p.getHeight()/2d;
-        double real = (this.x-midX)/midX;
-        double imaginary = (this.y-midY)/midY;
+    public Complex findMapping( Panel p ,double x1 ,double x2, double y1 ,double y2){
+        double width=p.getWidth();
+        double height=p.getHeight();
+        double real = ((x2-x1)*(this.x/width)) + x1;
+        double imaginary = ((y2-y1)*(this.y/height)) + y1;
         return new Complex(real,imaginary);
     }
 }

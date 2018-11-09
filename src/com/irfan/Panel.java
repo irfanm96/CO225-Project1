@@ -37,28 +37,14 @@ public  class Panel extends JPanel { // inherit JPanel
 		// call paintComponent from parent class
 		super.paintComponent(g);
 
-		Point mid = Point.findMidTo(triangle[0], triangle[1], triangle[2]);
-
-
-		Random ran = new Random();
-
-		// When it refreshes this function is called again.
-		// So do not change the value of static points
-		int points = Panel.points;
-
-		//while(points-- > 0) {
 		for(int i=0 ; i<600 ; i++) {
-			for(int j =0 ; j<800 ;j++) {
+			for(int j =0 ; j<600 ;j++) {
 				Point point=new Point(i,j); // create points
-				Complex z=point.findMapping(this); // map to complex plane
-				 if(!Complex.test1(z)){ // test for manderbolt
-					 printPoint((Graphics2D) g, Color.BLACK, point);
-				 }
-
-				//}
+				Complex z=point.findMapping(this,-2,2,-2,2); // map to complex plane
+				printPoint((Graphics2D) g, z.test1(1000), point);
 			}
 		}
-
+		System.out.println("printed all");
 	}
 
 	public static void main(String [] args) {
@@ -68,7 +54,7 @@ public  class Panel extends JPanel { // inherit JPanel
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// set the content of the frame as one of this panel
-		frame.setContentPane(new Panel(600, 800));
+		frame.setContentPane(new Panel(600, 600));
 
 		frame.pack();
 		frame.setLocationRelativeTo(null);

@@ -1,5 +1,7 @@
 package com.irfan;
 
+import java.awt.*;
+
 public class Complex {
     private double real;
     private double imaginary;
@@ -23,14 +25,22 @@ public class Complex {
         return new Complex(real, imaginary);
     }
 
+    public double getReal() {
+        return real;
+    }
+
+    public double getImaginary() {
+        return imaginary;
+    }
+
     private double calculateAbosluteValue() {
 
         double absolute = (this.real * this.real) + (this.imaginary * this.imaginary);
-        return absolute;
+        return Math.sqrt(absolute);
     }
 
     public boolean checkMod() {
-        if (this.calculateAbosluteValue() < 4) {
+        if (this.calculateAbosluteValue() > 2) {
             return false;
         }
         return true;
@@ -48,29 +58,34 @@ public class Complex {
     }
 
 
-    public static boolean test1(Complex z) {
-        int iterations = 1000;
-        Complex newz = calculateManderbolt(manderboltConstant, z);
+    public Color test1(int iterations) {
+
+        Complex newz = calculateManderbolt(manderboltConstant, this);
+
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-                return true;
+                Color newColor=new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
+                return newColor;
             }
-            newz = calculateManderbolt(newz, z);
+            newz = calculateManderbolt(newz, this);
         }
-        return false;
+
+        return Color.BLACK;
 
     }
-    public boolean test2(Complex z) {
-        int iterations = 1000;
+    public Color test2(int iterations ) {
 
-        Complex newz = calculateJulia(z);
+        Complex newz = calculateJulia(this);
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-                return true;
+                Color newColor=new Color(Color.HSBtoRGB(iterations/256f,1,iterations/(iterations+8f)));
+                return newColor;
             }
-            newz = calculateManderbolt(newz, z);
+            newz = calculateJulia( newz);
         }
-        return false;
+
+        return Color.BLACK;
+
 
     }
 
