@@ -27,11 +27,11 @@ public  class Panel extends JPanel { // inherit JPanel
 		// call paintComponent from parent class
 		super.paintComponent(g);
 
-		for(int i=0 ; i<this.width ; i++) {
-			for(int j =0 ; j<this.height ;j++) {
+		for(int i=0 ; i<this.width+1 ; i++) {
+			for(int j =0 ; j<this.height+1;j++) {
 				Point point=new Point(i,j); // create points
-				Complex z=point.findMapping(this,-2,2,-2,2); // map to complex plane
-				printPoint((Graphics2D) g, z.test2(1000), point);
+				Complex z=point.findMapping(this,-1,1,-1,1); // map to complex plane
+				 printPoint((Graphics2D) g, z.test1(1000), point);
 			}
 		}
 	}

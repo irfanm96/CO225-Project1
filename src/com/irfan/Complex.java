@@ -6,7 +6,7 @@ public class Complex {
     private double real;
     private double imaginary;
     private static Complex manderboltConstant = new Complex(0, 0);
-    private static Complex juliaConstant = new Complex(-0.5, 0.156);
+    private static Complex juliaConstant = new Complex(-0.4, 0.6);
 
     public Complex(double real, double imaginary) {
         this.real = real;
@@ -77,12 +77,12 @@ public class Complex {
         Complex newz = calculateJulia(this);
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-               return new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
+               return new Color(Color.HSBtoRGB(i/256f,0.8f,i/(i+8f)));
             }
             newz = calculateJulia( newz);
         }
 
-        return Color.BLACK;
+        return Color.CYAN;
 
 
     }
