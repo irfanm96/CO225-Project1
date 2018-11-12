@@ -31,10 +31,10 @@ public class Panel extends JPanel { // inherit JPanel
 
     }
 
-    public static Panel createPanel(int width, int height) {
+    public static Panel createPanel(int width, int height ,String name) {
 
         // create a frame
-        JFrame frame = new JFrame("Serpenski's Triangle");
+        JFrame frame = new JFrame(name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // set the content of the frame as one of this panel
