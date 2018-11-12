@@ -16,42 +16,31 @@ public  class Panel extends JPanel { // inherit JPanel
 		setPreferredSize(new Dimension(width, height));
 	}
 
-	private static void printPoint(Graphics2D frame, Color c, Point p) {
+	public static void printPoint(Graphics2D frame, Color c, Point p) {
 
 		frame.setColor(c);
 		frame.draw(new Line2D.Double(p.getX(), p.getY(),
 				p.getX(), p.getY()));
 	}
-
 	public void paintComponent(Graphics g) {
 		// call paintComponent from parent class
 		super.paintComponent(g);
 
 	}
 
-	public static void main(String [] args) {
+	public static Panel createPanel(int width, int height) {
 
 		// create a frame
 		JFrame frame = new JFrame("Serpenski's Triangle");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-		int x=600;
-		int y=800;
 		// set the content of the frame as one of this panel
-		Panel p=new Panel(x, y);
+		Panel p=new Panel(width,height);
 		frame.setContentPane(p);
-
-		for(int i=0 ; i<x+1 ; i++) {
-			for(int j =0 ; j<y+1;j++) {
-				Point point=new Point(i,j); // create points
-				Complex z=point.findMapping(p,-1,1,-1,1); // map to complex plane
-				printPoint(frame, z.test1(1000), point);
-			}
-		}
 
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		return p;
 	}
 }
