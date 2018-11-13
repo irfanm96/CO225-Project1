@@ -3,6 +3,13 @@ package com.irfan;
 
 import java.awt.*;
 import java.lang.String.*;
+import java.awt.*; /* java abstract window toolkit */
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.geom.Line2D;
+import java.util.Random;
+
+
 
 public class Fractals extends Thread {
     private int start;
@@ -162,7 +169,8 @@ public class Fractals extends Thread {
             t2.start();
             t3.start();
             t4.start();
-
+            Frame [] frame= JFrame.getFrames();
+            frame[0].setVisible(true);
         }
     }
 
