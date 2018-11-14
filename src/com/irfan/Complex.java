@@ -5,12 +5,28 @@ import java.awt.*;
 public class Complex {
     private double real;
     private double imaginary;
-    private static Complex mandelbrotSetConstant = new Complex(0, 0);
-    private static Complex juliaSetConstant = new Complex(-0.4, 0.6);
+    public static Complex mandelbrotSetConstant = new Complex(0, 0);
+    public static Complex juliaSetConstant = new Complex(-0.4, 0.6);
 
     public Complex(double real, double imaginary) {
         this.real = real;
         this.imaginary = imaginary;
+    }
+
+    public void setReal(double real) {
+        this.real = real;
+    }
+
+    public void setImaginary(double imaginary) {
+        this.imaginary = imaginary;
+    }
+
+    public static void setMandelbrotSetConstant(Complex mandelbrotSetConstant) {
+        Complex.mandelbrotSetConstant = mandelbrotSetConstant;
+    }
+
+    public static void setJuliaSetConstant(Complex juliaSetConstant) {
+        Complex.juliaSetConstant = juliaSetConstant;
     }
 
     public static Complex addComplex(Complex z1, Complex z2) {

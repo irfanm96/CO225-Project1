@@ -99,25 +99,29 @@ public class Fractals extends Thread {
     public static void main(String[] args) {
 
         String setName;
-        if (args.length == 0) {
-            System.out.println("Please enter other options");
+        int count=args.length;
+        if (count>6 || count<1) {
+            System.out.println("Please give the proper commandline arguments");
             return;
         }
-        if (args.length == 4) {
+        if (count== 1 || count==3) {
             if (!args[0].toLowerCase().equals("julia")) {
                 System.out.println("Invalid Input,Please enter write keyword julia/mandelbrot");
                 return;
             }
             setName = "JuliaSet";
             whichTest = "J";
-
-            for (int i = 1; i < 4; i++) {
-                if (!isNumeric(args[i])) {
-                    System.out.println("Invalid Input,need double/int for range and int for iterations for julia set");
-                    return;
+            if(count==3) {
+                for (int i = 1; i < 3; i++) {
+                    if (!isNumeric(args[i])) {
+                        System.out.println("Invalid Input,need double/int for range and int for iterations for julia set");
+                        return;
+                    }
                 }
+
+                Complex.setJuliaSetConstant(new Complex(Double.parseDouble(args[1]),Double.parseDouble(args[2])));
             }
-            Fractals.iterations = Integer.parseInt(args[3]);
+            Fractals.iterations = 1000;
             int y = getHeight() / 4;
             Fractals.createThread(setName, y);
 
@@ -125,7 +129,7 @@ public class Fractals extends Thread {
         }
 
 
-        if (args.length == 6) {
+        if (count == 6) {
             if (!args[0].toLowerCase().equals("mandelbrot")) {
                 System.out.println("Invalid Input,Please enter write keyword mandelbrot/julia");
                 return;
@@ -161,6 +165,8 @@ public class Fractals extends Thread {
 
         private static void createThread (String name,int y){
             Fractals.p = Panel.createPanel(getWidth(), getHeight(), name);
+           Fractals.p.setVisible(true);
+
             Fractals t1 = new Fractals(0, y);
             Fractals t2 = new Fractals(y, 2 * y);
             Fractals t3 = new Fractals(2 * y, 3 * y);
@@ -169,8 +175,17 @@ public class Fractals extends Thread {
             t2.start();
             t3.start();
             t4.start();
-            Frame [] frame= JFrame.getFrames();
-            frame[0].setVisible(true);
+            System.out.println("thread started");
+            try {
+                t1.join();
+                t2.join();
+                t3.join();
+                t4.join();
+            }catch (InterruptedException e){
+                System.out.println("Thread execution interupted");
+                return;
+            }
+            System.out.println("no interuptions");
         }
     }
 
