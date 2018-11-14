@@ -165,7 +165,6 @@ public class Fractals extends Thread {
 
         private static void createThread (String name,int y){
             Fractals.p = Panel.createPanel(getWidth(), getHeight(), name);
-           Fractals.p.setVisible(true);
 
             Fractals t1 = new Fractals(0, y);
             Fractals t2 = new Fractals(y, 2 * y);
