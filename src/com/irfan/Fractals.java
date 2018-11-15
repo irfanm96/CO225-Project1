@@ -1,15 +1,6 @@
 package com.irfan;
 
 
-import java.awt.*;
-import java.lang.String.*;
-import java.awt.*; /* java abstract window toolkit */
-import java.awt.event.*;
-import javax.swing.*;
-import java.awt.geom.Line2D;
-import java.util.Random;
-
-
 public class Fractals extends Thread {
     private int start;  // start point for a thread to print
     private int end; // end point for a thread to print

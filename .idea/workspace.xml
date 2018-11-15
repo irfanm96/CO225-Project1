@@ -163,7 +163,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542298516038" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542298715273" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -186,7 +186,7 @@
     <configuration name="Fractals" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.irfan.Fractals" />
       <module name="CO225-Project1" />
-      <option name="PROGRAM_PARAMETERS" value="mandelbrot -1 1 -1 1 1000" />
+      <option name="PROGRAM_PARAMETERS" value="julia " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.irfan.*" />
