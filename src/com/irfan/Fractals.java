@@ -67,7 +67,7 @@ public class Fractals extends Thread {
             for (int j = getStart(); j < getEnd() + 1; j++) {
                 Point point = new Point(i, j); // create points
                 Complex z = point.findMapping(getP(), -1, 1, -1, 1); // map to complex plane
-                Panel.printPoint((Graphics2D) getP().getGraphics(), z.mandelBrotSetTest(iterations), point);
+//                Panel.printPoint((Graphics2D) getP().getGraphics(), z.mandelBrotSetTest(iterations), point);
 
             }
         }
@@ -81,7 +81,8 @@ public class Fractals extends Thread {
             for (int j = getStart(); j < getEnd() + 1; j++) {
                 Point point = new Point(i, j); // create points
                 Complex z = point.findMapping(getP(), -1, 1, -1, 1); // map to complex plane
-                Panel.printPoint((Graphics2D) getP().getGraphics(), z.juliaSetTest(iterations), point);
+                p.setPixelColor(point,z.mandelBrotSetTest(100));
+                p.repaint();
             }
         }
     }
@@ -166,20 +167,20 @@ public class Fractals extends Thread {
         private static void createThread (String name,int y){
             Fractals.p = Panel.createPanel(getWidth(), getHeight(), name);
 
-            Fractals t1 = new Fractals(0, y);
-            Fractals t2 = new Fractals(y, 2 * y);
-            Fractals t3 = new Fractals(2 * y, 3 * y);
-            Fractals t4 = new Fractals(3 * y, getHeight());
+            Fractals t1 = new Fractals(0, getHeight());
+//            Fractals t2 = new Fractals(y, 2 * y);
+//            Fractals t3 = new Fractals(2 * y, 3 * y);
+//            Fractals t4 = new Fractals(3 * y, getHeight());
             t1.start();
-            t2.start();
-            t3.start();
-            t4.start();
+//            t2.start();
+//            t3.start();
+//            t4.start();
             System.out.println("thread started");
             try {
                 t1.join();
-                t2.join();
-                t3.join();
-                t4.join();
+//                t2.join();
+//                t3.join();
+//                t4.join();
             }catch (InterruptedException e){
                 System.out.println("Thread execution interupted");
                 return;
