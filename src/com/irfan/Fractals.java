@@ -66,8 +66,8 @@ public class Fractals extends Thread {
 
     public void printMandelBrotSet(double x1, double x2, double y1, double y2, int iterations) {
 
-        for (int i = 0; i < getWidth() + 1; i++) {
-            for (int j = getStart(); j < getEnd() + 1; j++) {
+        for (int i = 0; i < getWidth() ; i++) {
+            for (int j = getStart(); j < getEnd() ; j++) {
                 Point point = new Point(i, j); // create points
                 Complex z = point.findMapping(getP(), x1, x2, y1, y2); // map to complex plane
                 p.setPixelColor(point, z.mandelBrotSetTest(iterations));// set the pixel color in buffered image

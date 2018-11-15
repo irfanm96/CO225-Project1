@@ -11,6 +11,7 @@ public class Point {
     public double getX() { return this.x; } 
     public double getY() { return this.y; } 
 
+    // find mapping for each a point,and returns the corresponding complex number;
     public Complex findMapping( Panel p ,double x1 ,double x2, double y1 ,double y2 ){
         double width=p.getWidth();
         double height=p.getHeight();

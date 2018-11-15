@@ -10,8 +10,8 @@ import java.awt.Color;
 
 public class Panel extends JPanel { // inherit JPanel
 
-    public int width, height;
-    protected static BufferedImage bufferedImage;
+    private int width, height;
+    private static BufferedImage bufferedImage;
     public static JFrame frame;
 
     public Panel(int width, int height) {
@@ -21,14 +21,6 @@ public class Panel extends JPanel { // inherit JPanel
         setPreferredSize(new Dimension(width, height));
         bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     }
-//
-//    public static void printPoint(Graphics2D frame, Color c, Point p) {
-//
-//        frame.setColor(c);
-//        frame.draw(new Line2D.Double(p.getX(), p.getY(),
-//                p.getX(), p.getY()));
-//    }
-
     public void paintComponent(Graphics g) {
         // call paintComponent from parent class
         super.paintComponent(g);
@@ -37,8 +29,8 @@ public class Panel extends JPanel { // inherit JPanel
 
     }
 
-    public void setPixelColor(Point p,Color c) {                  //RGB setting for points in fractal set
-        bufferedImage.setRGB((int) p.getX(), (int) p.getY(), c.getRGB());
+    public void setPixelColor(Point p,Color c) {
+        bufferedImage.setRGB((int) p.getX(), (int) p.getY(), c.getRGB()); // set colors in buffered image
     }
 
     public static Panel createPanel(int width, int height, String name) {

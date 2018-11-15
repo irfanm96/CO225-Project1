@@ -5,38 +5,27 @@ import java.awt.*;
 public class Complex {
     private double real;
     private double imaginary;
-    public static Complex mandelbrotSetConstant = new Complex(0, 0);
-    public static Complex juliaSetConstant = new Complex(-0.4, 0.6);
+    private static Complex mandelbrotSetConstant = new Complex(0, 0); // mandelbort constant
+    private static Complex juliaSetConstant = new Complex(-0.4, 0.6);// julia constant
 
     public Complex(double real, double imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
 
-    public void setReal(double real) {
-        this.real = real;
-    }
-
-    public void setImaginary(double imaginary) {
-        this.imaginary = imaginary;
-    }
-
-    public static void setMandelbrotSetConstant(Complex mandelbrotSetConstant) {
-        Complex.mandelbrotSetConstant = mandelbrotSetConstant;
-    }
 
     public static void setJuliaSetConstant(Complex juliaSetConstant) {
         Complex.juliaSetConstant = juliaSetConstant;
     }
-
+    // function to add two complex numbers
     public static Complex addComplex(Complex z1, Complex z2) {
         double real = z1.getReal() + z2.getReal();
         double imaginary = z1.getImaginary() + z2.getImaginary();
         return new Complex(real, imaginary);
     }
-
+  // calculate the square of complex number
     public Complex calculateSquare() {
-        double real = (getReal() * getReal()) - (getImaginary() * getImaginary());
+        double real = (Math.pow(getReal(),2)) - (Math.pow(getImaginary(),2));
         double imaginary = 2 * getReal() * getImaginary();
         return new Complex(real, imaginary);
     }
@@ -51,36 +40,37 @@ public class Complex {
 
     private double calculateAbosluteValue() {
 
-        double absolute = (getReal() * getReal()) + (getImaginary() * getImaginary());
-        return absolute;
+        double absolute = (Math.pow(getReal(),2)) + (Math.pow(getImaginary(),2));
+        return absolute;// not returning the square root
     }
-
+ // check modulus of the complex number
     private boolean checkMod() {
-        if (this.calculateAbosluteValue() < 4) {
+        if (this.calculateAbosluteValue() < 4) { // fractals test
             return false;
         }
         return true;
     }
-
+// calculate the sequence of mandelbrot complex numbers
     private static Complex calculateMandelbrot(Complex z1, Complex z2) {
         Complex newZ;
         newZ = addComplex(z1.calculateSquare(), z2);
         return newZ;
     }
-    public static Complex calculateJulia(Complex z1) {
+    // calculate the sequence of mandelbrot complex numbers
+    private static Complex calculateJulia(Complex z1) {
         Complex newZ;
         newZ = addComplex(z1.calculateSquare(), juliaSetConstant);
         return newZ;
     }
 
-
+ // return the appropriate color after mandelbrot test
     public Color mandelBrotSetTest(int iterations) {
 
         Complex newz = calculateMandelbrot(mandelbrotSetConstant, this);
 
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-                return  new Color(Color.HSBtoRGB(i/256f,1,i/(i+8f)));
+                return  new Color(Color.HSBtoRGB(i/1024f,1f,i/(i+10f)));
             }
             newz = calculateMandelbrot(newz, this);
         }
@@ -88,12 +78,14 @@ public class Complex {
         return Color.BLACK;
 
     }
+    // return the appropriate color after julia test
+
     public Color juliaSetTest(int iterations ) {
 
         Complex newz = calculateJulia(this);
         for (int i = 0; i < iterations; i++) {
             if (newz.checkMod()) {
-               return new Color(Color.HSBtoRGB(i/256f,0.8f,i/(i+8f)));
+               return new Color(Color.HSBtoRGB(i/1024f,1f,i/(i+10f)));
             }
             newz = calculateJulia( newz);
         }
