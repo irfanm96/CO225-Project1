@@ -12,6 +12,7 @@ public class Panel extends JPanel { // inherit JPanel
 
     public int width, height;
     protected static BufferedImage bufferedImage;
+    public static JFrame frame;
 
     public Panel(int width, int height) {
         // set the panel size
@@ -42,7 +43,7 @@ public class Panel extends JPanel { // inherit JPanel
 
     public static Panel createPanel(int width, int height, String name) {
         // create a frame
-        JFrame frame = new JFrame(name);
+         frame = new JFrame(name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // set the content of the frame as one of this panel
@@ -51,7 +52,6 @@ public class Panel extends JPanel { // inherit JPanel
 
         frame.pack();
         frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
         return p;
     }
 }
