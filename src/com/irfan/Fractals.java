@@ -10,7 +10,6 @@ import java.awt.geom.Line2D;
 import java.util.Random;
 
 
-
 public class Fractals extends Thread {
     private int start;
     private int end;
@@ -22,7 +21,8 @@ public class Fractals extends Thread {
     private static String whichTest;
     private static Panel p;
     private static int width = 600;
-    private static int height = 800;
+    private static int height = 600;
+    private static int numberOfThreads = 4;
 
 
     public Fractals(int start, int end) {
@@ -54,7 +54,8 @@ public class Fractals extends Thread {
         if (whichTest.equals("J")) {
             printJuliaSet(iterations);
             return;
-        }if (whichTest.equals("M")){
+        }
+        if (whichTest.equals("M")) {
             printMandelBrotSet(x1, x2, y1, y2, iterations);
 
         }
@@ -66,8 +67,9 @@ public class Fractals extends Thread {
         for (int i = 0; i < getWidth() + 1; i++) {
             for (int j = getStart(); j < getEnd() + 1; j++) {
                 Point point = new Point(i, j); // create points
-                Complex z = point.findMapping(getP(), -1, 1, -1, 1); // map to complex plane
-//                Panel.printPoint((Graphics2D) getP().getGraphics(), z.mandelBrotSetTest(iterations), point);
+                Complex z = point.findMapping(getP(), x1, x2, y1, y2); // map to complex plane
+                p.setPixelColor(point, z.mandelBrotSetTest(iterations));
+                p.repaint();
 
             }
         }
@@ -77,11 +79,11 @@ public class Fractals extends Thread {
 
     public void printJuliaSet(int iterations) {
 
-        for (int i = 0; i < getWidth() + 1; i++) {
-            for (int j = getStart(); j < getEnd() + 1; j++) {
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = getStart(); j < getEnd(); j++) {
                 Point point = new Point(i, j); // create points
                 Complex z = point.findMapping(getP(), -1, 1, -1, 1); // map to complex plane
-                p.setPixelColor(point,z.mandelBrotSetTest(100));
+                p.setPixelColor(point, z.juliaSetTest(1000));
                 p.repaint();
             }
         }
@@ -100,19 +102,19 @@ public class Fractals extends Thread {
     public static void main(String[] args) {
 
         String setName;
-        int count=args.length;
-        if (count>6 || count<1) {
+        int count = args.length;
+        if (count != 6 && count!= 1 && count!=3 ) {
             System.out.println("Please give the proper commandline arguments");
             return;
         }
-        if (count== 1 || count==3) {
-            if (!args[0].toLowerCase().equals("julia")) {
+        if (count == 1 || count == 3) {
+            if (!args[0].equalsIgnoreCase("julia")) {
                 System.out.println("Invalid Input,Please enter write keyword julia/mandelbrot");
                 return;
             }
             setName = "JuliaSet";
             whichTest = "J";
-            if(count==3) {
+            if (count == 3) {
                 for (int i = 1; i < 3; i++) {
                     if (!isNumeric(args[i])) {
                         System.out.println("Invalid Input,need double/int for range and int for iterations for julia set");
@@ -120,10 +122,11 @@ public class Fractals extends Thread {
                     }
                 }
 
-                Complex.setJuliaSetConstant(new Complex(Double.parseDouble(args[1]),Double.parseDouble(args[2])));
+                Complex.setJuliaSetConstant(new Complex(Double.parseDouble(args[1]), Double.parseDouble(args[2])));
             }
             Fractals.iterations = 1000;
             int y = getHeight() / 4;
+            System.out.println(y);
             Fractals.createThread(setName, y);
 
 
@@ -131,13 +134,12 @@ public class Fractals extends Thread {
 
 
         if (count == 6) {
-            if (!args[0].toLowerCase().equals("mandelbrot")) {
+            if (!args[0].equalsIgnoreCase("mandelbrot")) {
                 System.out.println("Invalid Input,Please enter write keyword mandelbrot/julia");
                 return;
             }
             setName = "MandelBrotSet";
             whichTest = "M";
-
 
             for (int i = 1; i < 6; i++) {
                 if (!isNumeric(args[i])) {
@@ -157,35 +159,31 @@ public class Fractals extends Thread {
             Fractals.y2 = Double.parseDouble(args[4]);
 
             int y = getHeight() / 4;
-            System.out.println(y);
             Fractals.createThread(setName, y);
 
         }
     }
 
 
-        private static void createThread (String name,int y){
-            Fractals.p = Panel.createPanel(getWidth(), getHeight(), name);
+    private static void createThread(String name, int y) {
+        Fractals.p = Panel.createPanel(getWidth(), getHeight(), name);
 
-            Fractals t1 = new Fractals(0, getHeight());
-//            Fractals t2 = new Fractals(y, 2 * y);
-//            Fractals t3 = new Fractals(2 * y, 3 * y);
-//            Fractals t4 = new Fractals(3 * y, getHeight());
-            t1.start();
-//            t2.start();
-//            t3.start();
-//            t4.start();
-            System.out.println("thread started");
-            try {
-                t1.join();
-//                t2.join();
-//                t3.join();
-//                t4.join();
-            }catch (InterruptedException e){
-                System.out.println("Thread execution interupted");
-                return;
+        Fractals[] t = new Fractals[numberOfThreads];
+        int i;
+        for (i = 0; i < numberOfThreads-1 ; i++) {
+            t[i] = new Fractals(i * y, (i + 1) * y);
+            t[i].start();
+        }
+        t[i]=new Fractals((i-1)*y ,getHeight());
+        t[i].start();
+        try {
+            for (int j = 0; j <numberOfThreads ; j++) {
+                t[j].join();
             }
-            System.out.println("no interuptions");
+        } catch (InterruptedException e) {
+            System.out.println("Thread execution interupted");
+            return;
         }
     }
+}
 
