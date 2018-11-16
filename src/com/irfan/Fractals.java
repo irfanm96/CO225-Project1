@@ -102,13 +102,36 @@ public class Fractals extends Thread {
             return;// defensive approach , if not valid argument length print message and exit
         }
         if (count == 1 || count == 3) { // check for julia set
-            if (!args[0].equalsIgnoreCase("julia")) {
+            if (!args[0].equalsIgnoreCase("julia") && !args[0].equalsIgnoreCase("mandelbrot")) {
                 System.out.println("Invalid Input,Please enter write keyword julia/mandelbrot");
                 return;// if argument 1 is not julia exit
             }
-            setName = "JuliaSet"; // frame name
-            whichTest = "J";
-            if (count == 3) {  // change the julia constant
+
+            if(count==1){
+                if(args[0].equalsIgnoreCase("julia")){
+                    setName = "JuliaSet"; // frame name
+                    whichTest = "J";
+                    Fractals.iterations = 1000;
+                    Fractals.createThread(setName);
+                    return;
+                }
+                setName = "MandelbrotSet"; // frame name
+                whichTest = "M";
+                Fractals.iterations = 1000;
+                // set region of interest
+                Fractals.x1 = -1;
+
+                Fractals.x2 = 1;
+
+                Fractals.y1 = -1;
+
+                Fractals.y2 = 1;
+
+                Fractals.createThread(setName);
+                return;
+
+            }
+            if (count == 3 && args[0].equalsIgnoreCase("julia")) {  // change the julia constant
                 for (int i = 1; i < 3; i++) {
                     if (!isNumeric(args[i])) {
                         System.out.println("Invalid Input,need double/int for range and int for iterations for julia set");
@@ -117,9 +140,11 @@ public class Fractals extends Thread {
                 }
 
                 Complex.setJuliaSetConstant(new Complex(Double.parseDouble(args[1]), Double.parseDouble(args[2])));
+                setName = "JuliaSet"; // frame name
+                whichTest = "J";
+                Fractals.iterations = 1000;
+                Fractals.createThread(setName);
             }
-            Fractals.iterations = 1000;
-            Fractals.createThread(setName);
 
 
         }
